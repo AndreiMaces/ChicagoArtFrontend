@@ -1,0 +1,27 @@
+<div class="flex">
+  <div class="col-6">
+    <h2>{{artwork.title}}</h2>
+    <h3>Artist: {{artwork.artist_title ? artwork.artist_title : 'Unknown' }}</h3>
+    <h4>Info: {{artwork.credit_line}}</h4>
+    <p>Date: {{artwork.date_display}}</p>
+    <p>Origin: {{artwork.place_of_origin}}</p>
+    <p>Type: {{artwork.artwork_type_title}}</p>
+    <div *ngIf="artwork.category_titles.length > 0">
+      <p>Categories:</p>
+      <ul>
+        <li *ngFor="let categoryTitle of artwork.category_titles">{{categoryTitle}}</li>
+      </ul>
+    </div>
+    <div *ngIf="artwork.style_titles.length > 0">
+      <p>Styles:</p>
+      <ul>
+        <li *ngFor="let styleTitle of artwork.style_titles">{{styleTitle}}</li>
+      </ul>
+    </div>
+
+  </div>
+  <div class="col-6">
+    <p-image [src]="artwork.imageURL" alt="Art image" [preview]="true" *ngIf="artwork.image_id"></p-image>
+  </div>
+</div>
+

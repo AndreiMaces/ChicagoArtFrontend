@@ -1,0 +1,29 @@
+ <p-card styleClass="my-3">
+    <ng-template pTemplate="header">
+      <p-image [src]="artworkInfo.imageURL" alt="Art image" [preview]="true" *ngIf="artworkInfo.image_id"></p-image>
+    </ng-template>
+   <ng-template pTemplate="body">
+     <h2>{{artworkInfo.title}}</h2>
+     <h3>Artist: {{artworkInfo.artist_title ? artworkInfo.artist_title : 'Unknown' }}</h3>
+     <h4>Info: {{artworkInfo.credit_line}}</h4>
+     <p>Date: {{artworkInfo.date_display}}</p>
+     <p>Origin: {{artworkInfo.place_of_origin}}</p>
+     <p>Type: {{artworkInfo.artwork_type_title}}</p>
+     <div *ngIf="artworkInfo.category_titles.length > 0">
+       <p>Categories:</p>
+       <ul>
+         <li *ngFor="let categoryTitle of artworkInfo.category_titles">{{categoryTitle}}</li>
+       </ul>
+     </div>
+    <div *ngIf="artworkInfo.style_titles.length > 0">
+      <p>Styles:</p>
+      <ul>
+        <li *ngFor="let styleTitle of artworkInfo.style_titles">{{styleTitle}}</li>
+      </ul>
+    </div>
+    <div class="flex justify-content-end">
+      <a [routerLink]="artworkInfo.id.toString()" class="">More details</a>
+    </div>
+
+   </ng-template>
+ </p-card>

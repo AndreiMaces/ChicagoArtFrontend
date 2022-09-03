@@ -1,0 +1,24 @@
+<form action="" class="fixed top-0 right-0 m-3" [formGroup]="searchFormGroup" (ngSubmit)="onSubmit()">
+  <input
+    type="text"
+    pInputText
+    formControlName="search"
+  >
+  <button
+    type="submit"
+    pButton
+    icon="pi pi-search">
+  </button>
+</form>
+<div class="loader-wrapper" *ngIf="loading">
+  <p-progressSpinner></p-progressSpinner>
+</div>
+<div class="grid md:w-7 w-full mx-auto" id="top" *ngIf="!loading">
+  <div class="col-12 md:col-6">
+    <app-artwork-card  *ngFor="let artwork of artworks.slice(0, 6);" [artworkInfo]="artwork"></app-artwork-card>
+  </div>
+  <div class="col-12 md:col-6">
+    <app-artwork-card  *ngFor="let artwork of artworks.slice(6 , 12);" [artworkInfo]="artwork"></app-artwork-card>
+  </div>
+</div>
+<p-paginator [rows]="12" [totalRecords]="10990" (onPageChange)="onPageChange($event)" #paginator></p-paginator>
